@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
      font-family: 'Poppins', sans-serif;
+     font-weight: 400;
   }
 
   html {
@@ -24,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-
+background-color: rgba(254, 252, 255, 1);
     &::-webkit-scrollbar {
     width: 7px;
   }
