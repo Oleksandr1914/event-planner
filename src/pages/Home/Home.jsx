@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ButtonAdd } from '../../components/ButtonAddEvent/ButtonAddEvent.styled';
 import SelectCategory from '../../components/SelectCategory/SelectCategory';
 import SelectSort from '../../components/SelectSort/SelectSort';
-import { Container, FilterBlock } from './Home.styled';
+import { Container, EventBlock, FilterBlock, Title } from './Home.styled';
 
 const Home = () => {
   const [isActiveSort, setIsActiveSort] = useState(false);
@@ -23,7 +23,10 @@ const Home = () => {
         />
         <ButtonAdd />
       </FilterBlock>
-      <div>Home</div>
+      <EventBlock>
+        <Title>My events</Title>
+        <div>Home</div>
+      </EventBlock>
     </Container>
   );
 };
