@@ -3,6 +3,7 @@ import {
   ItemBody,
   Select,
   SelectBody,
+  TextCategory,
   TextSelector,
 } from './SelectCategory.styled';
 
@@ -38,13 +39,13 @@ const SelectCategory = ({
 
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        setIsActiveCategory(false);
+        setIsActiveCategory(!isActiveCategory);
       }
     };
 
     const handleBodyClick = e => {
       if (e.target !== btnRef.current) {
-        setIsActiveCategory(false);
+        setIsActiveCategory(!isActiveCategory);
       }
     };
 
@@ -70,6 +71,7 @@ const SelectCategory = ({
       className={isActiveCategory && 'active'}
       onClick={selectHandler}
     >
+      <TextCategory>{value === '' ? 'Category' : value}</TextCategory>
       {isActiveCategory && <TextSelector>Category</TextSelector>}
       {isActiveCategory && (
         <SelectBody>

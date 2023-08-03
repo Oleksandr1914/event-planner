@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../utils/colors';
 import Plus from '../../assets/plus.svg';
+import { device } from '../../utils/mixins';
 
 export const ButtonAdd = styled.button`
   position: relative;
@@ -19,8 +20,8 @@ export const ButtonAdd = styled.button`
   &::before {
     content: '';
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: 15px;
+    left: 15px;
     z-index: 2;
     width: 24px;
     height: 24px;
@@ -28,5 +29,17 @@ export const ButtonAdd = styled.button`
     background-image: url(${Plus});
     background-repeat: no-repeat;
     background-size: 100%;
+  }
+  ${device.tablet} {
+    width: 193px;
+    padding-left: 46px;
+    &::after {
+      content: 'Add new event';
+      padding: 0;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 1);
+    }
   }
 `;

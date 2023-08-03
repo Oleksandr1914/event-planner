@@ -2,17 +2,19 @@ import styled from 'styled-components';
 import Sort from '../../assets/sort.svg';
 import SortAccent from '../../assets/sort-accent.svg';
 import { colors } from '../../utils/colors';
+import { device } from '../../utils/mixins';
 
 export const Select = styled.div`
   position: relative;
-  display: ${props => (props.type ? `none` : 'block')};
   margin-left: 24px;
+  display: ${props => (props.type ? `none` : 'block')};
   width: 56px;
   height: 56px;
   padding: 16px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  cursor: pointer;
 
   &::before {
     content: '';
@@ -40,6 +42,29 @@ export const Select = styled.div`
     right: 24px;
     background-image: url(${SortAccent});
   }
+
+  ${device.tablet} {
+    display: block;
+    width: 129px;
+    padding-right: 40px;
+    &.active {
+      width: 170px;
+      padding-right: 40px;
+      padding-left: 16px;
+    }
+  }
+`;
+
+export const TextSort = styled.span`
+  display: none;
+  ${device.tablet} {
+    display: inline-block;
+    pointer-events: none;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: ${colors.accent};
+  }
 `;
 
 export const TextSelector = styled.span`
@@ -47,6 +72,9 @@ export const TextSelector = styled.span`
   font-weight: 500;
   line-height: 1.5;
   color: ${colors.accent};
+  ${device.tablet} {
+    display: none;
+  }
 `;
 
 export const SelectBody = styled.ul`
@@ -57,6 +85,9 @@ export const SelectBody = styled.ul`
   background-color: #ffffff;
   border-radius: 0 0 8px 8px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  ${device.tablet} {
+    width: 170px;
+  }
 `;
 
 export const ItemBody = styled.li`

@@ -4,6 +4,7 @@ import {
   Select,
   SelectBody,
   TextSelector,
+  TextSort,
 } from './SelectSort.styled';
 import Up from '../../assets/up.svg';
 import Down from '../../assets/down.svg';
@@ -67,6 +68,7 @@ const SelectSort = ({ isActiveSort, setIsActiveSort, isActiveCategory }) => {
       className={isActiveSort && 'active'}
       onClick={selectHandler}
     >
+      <TextSort>Sort by</TextSort>
       {isActiveSort && <TextSelector>Sort by</TextSelector>}
       {isActiveSort && (
         <SelectBody>

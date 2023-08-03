@@ -9,6 +9,10 @@ export const Container = styled.main`
     width: ${size.tablet};
     padding: 40px;
   }
+  ${device.desktop} {
+    width: ${size.desktop};
+    padding: 60px 80px;
+  }
 `;
 
 export const FilterBlock = styled.div`
@@ -17,7 +21,6 @@ export const FilterBlock = styled.div`
   justify-content: end;
   justify-items: end;
   grid-template-areas: 'category sort add';
-  /* gap: 24px; */
 `;
 
 export const EventBlock = styled.div``;
