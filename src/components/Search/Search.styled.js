@@ -12,8 +12,8 @@ export const SearchBox = styled.div`
     z-index: 2;
     width: 24px;
     height: 24px;
-    top: 15px;
-    left: 15px;
+    top: 12px;
+    left: 12px;
     background-image: url(${Search});
     background-repeat: no-repeat;
     background-size: 100%;

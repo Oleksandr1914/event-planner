@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ol,
+  li,
   ul {
     list-style: none;
   }
@@ -26,19 +27,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
 background-color: rgba(254, 252, 255, 1);
-    &::-webkit-scrollbar {
-    width: 7px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #c7967d33;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #ad846f99;
-    border-radius: 8px;
-  }
-
+ 
   }
 
 

@@ -4,7 +4,7 @@ import { device, size } from '../../utils/mixins';
 
 export const HeaderBox = styled.div`
   width: 100%;
-  border-bottom: 1px solid ${colors.violet};
+  border-bottom: 1px solid ${colors.accent};
 `;
 
 export const ContainerHeader = styled.header`
@@ -34,7 +34,7 @@ export const ContainerHeader = styled.header`
 export const Logo = styled.span`
   grid-area: logo;
   align-self: center;
-  color: ${colors.violet};
+  color: ${colors.accent};
   font-family: Alata;
   font-size: 24px;
   line-height: 1.33;

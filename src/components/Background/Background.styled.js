@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 import Background from '../../assets/background.png';
+import { device } from '../../utils/mixins';
 
 export const WaveBackground = styled.div`
   width: 100%;
-  height: calc(100vh - 168px);
+  min-height: calc(100vh - 168px);
   background-image: url(${Background});
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-position: top;
+  background-size: cover;
+  ${device.tablet} {
+    min-height: calc(100vh - 100px);
+  }
+  ${device.desktop} {
+    min-height: calc(100vh - 92px);
+  }
 `;
