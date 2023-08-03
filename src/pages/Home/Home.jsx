@@ -3,6 +3,7 @@ import { ButtonAdd } from '../../components/ButtonAddEvent/ButtonAddEvent.styled
 import SelectCategory from '../../components/SelectCategory/SelectCategory';
 import SelectSort from '../../components/SelectSort/SelectSort';
 import { Container, EventBlock, FilterBlock, Title } from './Home.styled';
+import CartEvent from '../../components/CardEvent/CardEvent';
 
 const Home = () => {
   const [isActiveSort, setIsActiveSort] = useState(false);
@@ -25,7 +26,7 @@ const Home = () => {
       </FilterBlock>
       <EventBlock>
         <Title>My events</Title>
-        <div>Home</div>
+        <CartEvent />
       </EventBlock>
     </Container>
   );
