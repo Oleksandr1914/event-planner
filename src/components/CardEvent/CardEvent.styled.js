@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { device } from '../../utils/mixins';
+import { device } from '../../utils/mixins';
 import { colors } from '../../utils/colors';
 
 export const ContainerCard = styled.div`
@@ -9,12 +9,33 @@ export const ContainerCard = styled.div`
   background-color: rgba(255, 255, 255, 1);
   border-radius: 12px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+
+  ${device.tablet} {
+    width: 332px;
+  }
+  ${device.desktop} {
+    width: 302px;
+  }
+`;
+
+export const CardHover = styled.a`
+  &:hover .hover,
+  &:focus .hover {
+    outline: none;
+    display: block;
+  }
 `;
 
 export const ImageCard = styled.img`
   width: 272px;
   height: 340px;
   border-radius: 12px 12px 0 0;
+  ${device.tablet} {
+    width: 332px;
+  }
+  ${device.desktop} {
+    width: 302px;
+  }
 `;
 
 export const BottomOfTheCard = styled.div`
@@ -30,6 +51,12 @@ export const BlockLocationAndTime = styled.div`
   width: 272px;
   padding: 8px 16px;
   background-color: rgba(255, 255, 255, 0.8);
+  ${device.tablet} {
+    width: 332px;
+  }
+  ${device.desktop} {
+    width: 302px;
+  }
 `;
 
 export const DataTimeText = styled.p`
@@ -50,6 +77,12 @@ export const BlockTitle = styled.div`
   padding: 16px;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 0 0 12px 12px;
+  ${device.tablet} {
+    width: 332px;
+  }
+  ${device.desktop} {
+    width: 302px;
+  }
 `;
 
 export const TitleCard = styled.h2`
@@ -64,4 +97,31 @@ export const DescriptionCard = styled.p`
   font-size: 14px;
   line-height: 1.42;
   color: rgba(28, 27, 31, 1);
+`;
+
+export const CategoryBox = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: grid;
+  grid-template-areas: 'category priority';
+  gap: 12px;
+`;
+
+export const CategoryText = styled.span`
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
+`;
+
+export const PriorityText = styled.span`
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
 `;

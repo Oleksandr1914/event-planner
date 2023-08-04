@@ -12,7 +12,7 @@ export const Container = styled.main`
   }
   ${device.desktop} {
     width: ${size.desktop};
-    padding: 60px 80px;
+    padding: 80px 0;
   }
 `;
 
@@ -27,12 +27,21 @@ export const FilterBlock = styled.div`
 export const EventBlock = styled.div`
   position: relative;
   margin-top: 40px;
+  display: grid;
+  gap: 24px;
   ${device.tablet} {
     margin-top: 96px;
+    grid-template-areas:
+      'card card'
+      'card card'
+      'card card';
   }
 
   ${device.desktop} {
     margin-top: 40px;
+    grid-template-areas:
+      'card card card card'
+      'card card card card';
   }
 `;
 

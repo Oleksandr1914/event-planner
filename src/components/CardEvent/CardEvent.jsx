@@ -3,11 +3,15 @@ import {
   BlockLocationAndTime,
   BlockTitle,
   BottomOfTheCard,
+  CardHover,
+  CategoryBox,
+  CategoryText,
   ContainerCard,
   DataTimeText,
   DescriptionCard,
   ImageCard,
   LocationText,
+  PriorityText,
   TitleCard,
 } from './CardEvent.styled';
 import Art from '../../assets/image-event/art.png';
@@ -18,21 +22,22 @@ import Business from '../../assets/image-event/business.png';
 import WorkshopSecond from '../../assets/image-event/workshop2.png';
 import Music from '../../assets/image-event/music.png';
 import Sport from '../../assets/image-event/sport.png';
+import ButtonMoreInfo from '../ButtonMoreInfo/ButtonMoreInfo';
 
-const CartEvent = () => {
+const CartEvent = ({ event }) => {
   const [pictur, setPecture] = useState(null);
 
-  const event = {
-    title: 'Galery Opening',
-    description:
-      'Discover an enchanting evening celebrating the world of art at our exclusive gallery opening.',
-    data: '12.07',
-    time: '12:00',
-    location: 'Kyiv',
-    category: 'Art',
-    picture: 'Art',
-    priority: 'High',
-  };
+  // const event = {
+  //   title: 'Galery Opening',
+  //   description:
+  //     'Discover an enchanting evening celebrating the world of art at our exclusive gallery opening.',
+  //   data: '12.07',
+  //   time: '12:00',
+  //   location: 'Kyiv',
+  //   category: 'Art',
+  //   picture: 'Art',
+  //   priority: 'High',
+  // };
 
   useEffect(() => {
     switch (event.picture) {
@@ -66,21 +71,29 @@ const CartEvent = () => {
 
   return (
     <ContainerCard>
-      <ImageCard src={pictur} alt="event picture" />
-      <BottomOfTheCard>
-        <BlockLocationAndTime>
-          <DataTimeText>
-            <span>{event.data} </span>
-            at
-            <span> {event.time}</span>
-          </DataTimeText>
-          <LocationText>{event.location}</LocationText>
-        </BlockLocationAndTime>
-        <BlockTitle>
-          <TitleCard>{event.title}</TitleCard>
-          <DescriptionCard>{event.description}</DescriptionCard>
-        </BlockTitle>
-      </BottomOfTheCard>
+      <CardHover href="#" onClick={e => e.preventDefault()}>
+        <ImageCard src={pictur} alt="event picture" />
+        <CategoryBox>
+          <CategoryText>{event.category}</CategoryText>
+          <PriorityText>{event.priority}</PriorityText>
+        </CategoryBox>
+        <BottomOfTheCard>
+          <BlockLocationAndTime>
+            <DataTimeText>
+              <span>{event.data} </span>
+              at
+              <span> {event.time}</span>
+            </DataTimeText>
+            <LocationText>{event.location}</LocationText>
+          </BlockLocationAndTime>
+          <BlockTitle>
+            <TitleCard>{event.title}</TitleCard>
+            <DescriptionCard>{event.description}</DescriptionCard>
+
+            <ButtonMoreInfo />
+          </BlockTitle>
+        </BottomOfTheCard>
+      </CardHover>
     </ContainerCard>
   );
 };

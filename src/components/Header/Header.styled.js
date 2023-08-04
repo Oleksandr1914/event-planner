@@ -25,7 +25,7 @@ export const ContainerHeader = styled.header`
     gap: 24;
   }
   ${device.desktop} {
-    padding: 22px 80px;
+    padding: 22px 0;
     grid-template-columns: 1fr 410px 69px;
     width: ${size.desktop};
   }
