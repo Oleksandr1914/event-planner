@@ -1,14 +1,28 @@
-import { useState } from 'react';
-import { ButtonAdd } from '../../components/ButtonAddEvent/ButtonAddEvent.styled';
+import { useEffect, useState } from 'react';
 import SelectCategory from '../../components/SelectCategory/SelectCategory';
 import SelectSort from '../../components/SelectSort/SelectSort';
-import { Container, EventBlock, FilterBlock, Title } from './Home.styled';
-import CartEvent from '../../components/CardEvent/CardEvent';
-import { events } from '../../utils/events';
+import {
+  ButtonAdd,
+  Container,
+  EventBlock,
+  FilterBlock,
+  Title,
+} from './Home.styled';
+import CardEvent from '../../components/CardEvent/CardEvent';
+import { Outlet } from 'react-router-dom';
+import useEventStore from '../../store';
 
 const Home = () => {
   const [isActiveSort, setIsActiveSort] = useState(false);
   const [isActiveCategory, setIsActiveCategory] = useState(false);
+
+  const { eventData } = useEventStore(state => ({
+    eventData: state.eventData,
+  }));
+
+  useEffect(() => {
+    console.log(eventData);
+  }, [eventData]);
 
   return (
     <Container>
@@ -23,14 +37,15 @@ const Home = () => {
           setIsActiveSort={setIsActiveSort}
           isActiveCategory={isActiveCategory}
         />
-        <ButtonAdd />
+        <ButtonAdd to="/create-event" />
       </FilterBlock>
       <EventBlock>
         <Title>My events</Title>
-        {events.map(el => (
-          <CartEvent event={el} key={el.title} />
+        {eventData.map(el => (
+          <CardEvent event={el} key={el.id} />
         ))}
       </EventBlock>
+      <Outlet />
     </Container>
   );
 };

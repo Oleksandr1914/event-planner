@@ -123,5 +123,14 @@ export const PriorityText = styled.span`
   font-weight: 500;
   line-height: 1.42;
   border-radius: 8px;
+  color: ${props => {
+    if (props.type === 'High') {
+      return `${colors.hight}`;
+    } else if (props.type === 'Medium') {
+      return `${colors.medium}`;
+    } else if (props.type === 'Low') {
+      return `${colors.low}`;
+    }
+  }};
   background-color: rgba(255, 255, 255, 1);
 `;

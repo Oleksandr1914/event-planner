@@ -1,45 +1,33 @@
 import styled from 'styled-components';
-import Category from '../../assets/category.svg';
+import Up from '../../assets/select-up.svg';
+import Down from '../../assets/select-down.svg';
 import { colors } from '../../utils/colors';
 import { device } from '../../utils/mixins';
 
 export const Select = styled.div`
   position: relative;
-  display: ${props => (props.type ? `none` : 'block')};
-  width: 56px;
+  display: block;
+  width: 240px;
   height: 56px;
   padding: 16px;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  border: 1px solid ${colors.divider};
   pointer-events: visible;
-
   cursor: pointer;
 
   &::before {
     content: '';
     position: absolute;
     top: 16px;
-    right: 16px;
+    right: 12px;
     /* z-index: 2; */
     width: 24px;
     height: 24px;
 
-    background-image: url(${Category});
+    background-image: ${props => (props.type ? `url(${Up})` : `url(${Down})`)};
     background-repeat: no-repeat;
     background-size: 100%;
-  }
-
-  &.active {
-    width: 158px;
-    padding-left: 49px;
-    padding-right: 33px;
-    border-radius: 8px 8px 0 0;
-  }
-
-  &.active::before {
-    top: 16px;
-    right: 113px;
   }
 
   ${device.tablet} {
@@ -58,37 +46,23 @@ export const Select = styled.div`
   }
 `;
 
-export const TextCategory = styled.span`
-  display: none;
-  ${device.tablet} {
-    display: inline-block;
-    pointer-events: none;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.5;
-    color: ${colors.accent};
-  }
-`;
-
 export const TextSelector = styled.span`
   font-size: 16px;
-  font-weight: 500;
   line-height: 1.5;
-  color: ${colors.accent};
-  ${device.tablet} {
-    display: none;
-  }
+  color: ${colors.text};
 `;
 
 export const SelectBody = styled.ul`
   position: absolute;
-  top: 56px;
+  top: 74px;
   left: 0;
   z-index: 10;
-  width: 158px;
+  width: 240px;
+  padding: 0 16px;
   background-color: #ffffff;
-  border-radius: 0 0 8px 8px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+
+  border-radius: 8px;
   ${device.tablet} {
     width: 158px;
   }
@@ -96,9 +70,11 @@ export const SelectBody = styled.ul`
 
 export const ItemBody = styled.li`
   position: relative;
-  padding: 8px 24px;
+  padding: 16px 0;
   padding-top: 12px;
   font-size: 14px;
-  color: ${colors.divider};
-  border-top: 1px solid ${colors.divider};
+  color: ${colors.text};
+  &:not(:first-child) {
+    border-top: 1px solid ${colors.divider};
+  }
 `;

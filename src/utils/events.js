@@ -9,6 +9,7 @@ export const events = [
     category: 'Art',
     picture: 'Art',
     priority: 'High',
+    id: 1,
   },
   {
     title: 'Innovation Summit',
@@ -20,6 +21,7 @@ export const events = [
     category: 'Conference',
     picture: 'Conference',
     priority: 'Medium',
+    id: 2,
   },
   {
     title: 'Empower Your Creativity',
@@ -31,6 +33,7 @@ export const events = [
     category: 'Workshop',
     picture: 'Workshop',
     priority: 'High',
+    id: 3,
   },
   {
     title: 'Summer Soiree',
@@ -42,6 +45,7 @@ export const events = [
     category: 'Party',
     picture: 'Party',
     priority: 'High',
+    id: 4,
   },
   {
     title: 'Leadership Conference',
@@ -53,6 +57,7 @@ export const events = [
     category: 'Business',
     picture: 'Business',
     priority: 'Medium',
+    id: 5,
   },
   {
     title: 'Tech Startup Showcase',
@@ -64,6 +69,7 @@ export const events = [
     category: 'Workshop',
     picture: 'Workshop2',
     priority: 'Low',
+    id: 6,
   },
   {
     title: 'Acoustic Garden Concert',
@@ -75,6 +81,7 @@ export const events = [
     category: 'Music',
     picture: 'Music',
     priority: 'High',
+    id: 7,
   },
   {
     title: 'Extreme Adventure Race',
@@ -86,5 +93,6 @@ export const events = [
     category: 'Sport',
     picture: 'Sport',
     priority: 'Low',
+    id: 8,
   },
 ];

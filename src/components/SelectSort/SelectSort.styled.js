@@ -81,6 +81,7 @@ export const SelectBody = styled.ul`
   position: absolute;
   top: 56px;
   left: 0;
+  z-index: 10;
   width: 158px;
   background-color: #ffffff;
   border-radius: 0 0 8px 8px;

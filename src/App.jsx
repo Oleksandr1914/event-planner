@@ -3,6 +3,8 @@ import { GlobalStyle } from './globalStyles';
 import Background from './components/Background/Background';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
+import CreateEvent from './pages/CreateEvent/CreateEvent';
+import InfoEvent from './pages/InfoEvent/InfoEvent';
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       <Background>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/create-event" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/info-event" element={<InfoEvent />} />
           <Route path="/*" element={<Navigate to={'/'} />} />
         </Routes>
       </Background>

@@ -1,7 +1,11 @@
 import { Button } from './ButtonMoreInfo.styled';
 
 const ButtonMoreInfo = () => {
-  return <Button className="hover">More info</Button>;
+  return (
+    <Button className="hover" to="/info-event">
+      More info
+    </Button>
+  );
 };
 
 export default ButtonMoreInfo;

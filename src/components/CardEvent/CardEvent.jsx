@@ -22,9 +22,10 @@ import Business from '../../assets/image-event/business.png';
 import WorkshopSecond from '../../assets/image-event/workshop2.png';
 import Music from '../../assets/image-event/music.png';
 import Sport from '../../assets/image-event/sport.png';
+import Default from '../../assets/image-event/default.png';
 import ButtonMoreInfo from '../ButtonMoreInfo/ButtonMoreInfo';
 
-const CartEvent = ({ event }) => {
+const CardEvent = ({ event }) => {
   const [pictur, setPecture] = useState(null);
 
   // const event = {
@@ -66,8 +67,11 @@ const CartEvent = ({ event }) => {
       case 'Sport':
         setPecture(Sport);
         break;
+      case 'Default':
+        setPecture(Default);
+        break;
     }
-  }, []);
+  }, [event]);
 
   return (
     <ContainerCard>
@@ -75,7 +79,7 @@ const CartEvent = ({ event }) => {
         <ImageCard src={pictur} alt="event picture" />
         <CategoryBox>
           <CategoryText>{event.category}</CategoryText>
-          <PriorityText>{event.priority}</PriorityText>
+          <PriorityText type={event.priority}>{event.priority}</PriorityText>
         </CategoryBox>
         <BottomOfTheCard>
           <BlockLocationAndTime>
@@ -98,4 +102,4 @@ const CartEvent = ({ event }) => {
   );
 };
 
-export default CartEvent;
+export default CardEvent;
