@@ -69,7 +69,7 @@ const CardEvent = ({ event }) => {
       <BottomOfTheCard>
         <BlockLocationAndTime>
           <DataTimeText>
-            <span>{event.data} </span>
+            <span>{event.date} </span>
             at
             <span> {event.time}</span>
           </DataTimeText>

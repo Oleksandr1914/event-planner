@@ -24,10 +24,24 @@ const Home = () => {
     eventData: state.eventData,
   }));
   const search = useSearch(state => state.search);
+  const sort = useSearch(state => state.sort);
   // const onChange = page => {
   //   console.log(page);
   //   setCurrent(page);
   // };
+
+  function getPriorityValue(priority) {
+    switch (priority) {
+      case 'High':
+        return 1;
+      case 'Medium':
+        return 2;
+      case 'Low':
+        return 3;
+      default:
+        return 0; // Не визначено, розташувати в кінці
+    }
+  }
 
   return (
     <Container>
@@ -50,6 +64,25 @@ const Home = () => {
         <Title>My events</Title>
         {isCategory !== ''
           ? eventData
+              .sort((a, b) => {
+                if (sort === 'nameUp') {
+                  return a.title.localeCompare(b.title);
+                } else if (sort === 'nameDown') {
+                  return b.title.localeCompare(a.title);
+                } else if (sort === 'priorityUp') {
+                  return (
+                    getPriorityValue(a.priority) - getPriorityValue(b.priority)
+                  );
+                } else if (sort === 'priorityDown') {
+                  return (
+                    getPriorityValue(b.priority) - getPriorityValue(a.priority)
+                  );
+                } else if (sort === 'dateUp') {
+                  return new Date(a.date) - new Date(b.date);
+                } else if (sort === 'dateDown') {
+                  return new Date(b.date) - new Date(a.date);
+                }
+              })
               .filter(el => el.category === isCategory)
               .filter(
                 el =>
@@ -58,6 +91,31 @@ const Home = () => {
               )
               .map(el => <CardEvent event={el} key={el.id} />)
           : eventData
+              .sort((a, b) => {
+                if (sort === 'nameUp') {
+                  return a.title.localeCompare(b.title);
+                } else if (sort === 'nameDown') {
+                  return b.title.localeCompare(a.title);
+                } else if (sort === 'priorityUp') {
+                  return (
+                    getPriorityValue(a.priority) - getPriorityValue(b.priority)
+                  );
+                } else if (sort === 'priorityDown') {
+                  return (
+                    getPriorityValue(b.priority) - getPriorityValue(a.priority)
+                  );
+                } else if (sort === 'dateUp') {
+                  return (
+                    new Date(a.date + ' ' + a.time) -
+                    new Date(b.date + ' ' + b.time)
+                  );
+                } else if (sort === 'dateDown') {
+                  return (
+                    new Date(b.date + ' ' + b.time) -
+                    new Date(a.date + ' ' + a.time)
+                  );
+                }
+              })
               .filter(
                 el =>
                   el.title.toLowerCase().includes(search) ||

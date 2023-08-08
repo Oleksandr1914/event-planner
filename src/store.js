@@ -34,5 +34,7 @@ export const useEventStore = create(
 
 export const useSearch = create(set => ({
   search: '',
+  sort: {},
   editSearch: data => set({ search: data }),
+  editSort: data => set({ sort: data }),
 }));

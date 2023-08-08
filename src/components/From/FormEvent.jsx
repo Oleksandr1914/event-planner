@@ -86,7 +86,7 @@ const FormEvent = ({
             ? addEvent({
                 title: values.Title,
                 description: values.Description,
-                data: isDate,
+                date: isDate,
                 time: isTime,
                 location: values.Location,
                 category: isCategory,
@@ -97,7 +97,7 @@ const FormEvent = ({
             : editEvent({
                 title: values.Title,
                 description: values.Description,
-                data: isDate,
+                date: isDate,
                 time: isTime,
                 location: values.Location,
                 category: isCategory,

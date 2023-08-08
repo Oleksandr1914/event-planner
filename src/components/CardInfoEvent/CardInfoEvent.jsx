@@ -72,7 +72,7 @@ const CardInfoEvent = ({ event }) => {
             <span>{event.location}</span>
           </ItemInfoCategory>
           <ItemInfoCategory>
-            <span>{event.data} </span>
+            <span>{event.date} </span>
             at
             <span> {event.time}</span>
           </ItemInfoCategory>

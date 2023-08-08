@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   ItemBody,
   Select,
@@ -8,16 +8,18 @@ import {
 } from './SelectSort.styled';
 import Up from '../../assets/up.svg';
 import Down from '../../assets/down.svg';
+import { useSearch } from '../../store';
 
 const SelectSort = ({ isActiveSort, setIsActiveSort, isActiveCategory }) => {
-  const [value, setValue] = useState('');
+  const editSort = useSearch(state => state.editSort);
+
   const btnRef = useRef();
 
   const arraySort = [
     { id: 1, name: 'by name', image: Up, sortBy: 'nameUp' },
     { id: 2, name: 'by name', image: Down, sortBy: 'nameDown' },
-    { id: 3, name: 'by data', image: Up, sortBy: 'dataUp' },
-    { id: 4, name: 'by data', image: Down, sortBy: 'dataDown' },
+    { id: 3, name: 'by date', image: Up, sortBy: 'dateUp' },
+    { id: 4, name: 'by date', image: Down, sortBy: 'dateDown' },
     { id: 5, name: 'by priority', image: Up, sortBy: 'priorityUp' },
     { id: 6, name: 'by priority', image: Down, sortBy: 'priorityDown' },
   ];
@@ -27,7 +29,7 @@ const SelectSort = ({ isActiveSort, setIsActiveSort, isActiveCategory }) => {
   };
 
   const onItemBody = element => {
-    setValue(element);
+    editSort(element);
     setIsActiveSort(!isActiveSort);
   };
 
