@@ -1,5 +1,7 @@
 import {
+  BlockButton,
   BlockTextCard,
+  ButtonEdit,
   ContainerCard,
   Description,
   ImageCard,
@@ -15,7 +17,7 @@ import Business from '../../assets/image-event/business.png';
 import WorkshopSecond from '../../assets/image-event/workshop2.png';
 import Music from '../../assets/image-event/music.png';
 import Sport from '../../assets/image-event/sport.png';
-import Default from '../../assets/image-event/default.png';
+import Default from '../../assets/image-event/default-info.png';
 import { useEffect, useState } from 'react';
 import ButtonDeleteEvent from '../ButtonDeleteEvent/ButtonDeleteEvent';
 
@@ -75,7 +77,12 @@ const CardInfoEvent = ({ event }) => {
             <span> {event.time}</span>
           </ItemInfoCategory>
         </ListInfoCategory>
-        <ButtonDeleteEvent idEvent={event.id} />
+        <BlockButton>
+          <ButtonEdit to="/edit-event" state={{ ...event }}>
+            Edit
+          </ButtonEdit>
+          <ButtonDeleteEvent idEvent={event.id} />
+        </BlockButton>
       </BlockTextCard>
     </ContainerCard>
   );

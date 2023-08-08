@@ -1,4 +1,4 @@
-import useEventStore from '../../store';
+import { useEventStore } from '../../store';
 import { ButtonDelete } from './ButtonDeleteEvent.styled';
 
 const ButtonDeleteEvent = ({ idEvent }) => {

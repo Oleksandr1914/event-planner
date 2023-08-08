@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../utils/colors';
 import { device } from '../../utils/mixins';
+import { NavLink } from 'react-router-dom';
 
 export const ContainerCard = styled.div`
   min-height: 464px;
@@ -66,4 +67,39 @@ export const Priority = styled.span`
       return `${colors.low}`;
     }
   }};
+`;
+
+export const BlockButton = styled.div`
+  display: grid;
+  grid-template: 'a a';
+  grid-column-gap: 24px;
+
+  ${device.tablet} {
+    grid-column-gap: 16px;
+    place-content: end;
+  }
+`;
+
+export const ButtonEdit = styled(NavLink)`
+  /* display: inline-block; */
+  text-align: center;
+  width: 108px;
+  padding: 8px 16px;
+  margin-left: auto;
+  border: 1px solid ${colors.accent};
+  border-radius: 8px;
+  color: ${colors.accent};
+  background-color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.42;
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+    background-color: ${colors.hover};
+  }
+
+  ${device.tablet} {
+    width: 55px;
+    justify-self: end;
+  }
 `;

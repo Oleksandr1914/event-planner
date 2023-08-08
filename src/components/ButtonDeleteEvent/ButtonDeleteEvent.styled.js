@@ -3,7 +3,7 @@ import { colors } from '../../utils/colors';
 import { NavLink } from 'react-router-dom';
 
 export const ButtonDelete = styled(NavLink)`
-  display: block;
+  /* display: block; */
   width: 108px;
   padding: 8px 16px;
   margin-left: auto;

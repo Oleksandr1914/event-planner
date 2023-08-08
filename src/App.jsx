@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
 import InfoEvent from './pages/InfoEvent/InfoEvent';
+import EditEvent from './pages/EditEvent/EditEvent';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/create-event" element={<CreateEvent />} />
           <Route path="/info-event" element={<InfoEvent />} />
+          <Route path="/edit-event" element={<EditEvent />} />
           <Route path="/*" element={<Navigate to={'/'} />} />
         </Routes>
       </Background>

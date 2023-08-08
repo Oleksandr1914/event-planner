@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { events } from './utils/events';
 
-const useEventStore = create(
+export const useEventStore = create(
   persist(
     (set, get) => ({
       eventData: [...events],
@@ -15,6 +15,15 @@ const useEventStore = create(
         const newArray = get().eventData.filter(el => el.id !== idEvent);
         set({ eventData: newArray });
       },
+      editEvent: newEvent => {
+        const array = get().eventData.map(el =>
+          el.id === newEvent.id ? newEvent : el
+        );
+
+        set({
+          eventData: array,
+        });
+      },
     }),
     {
       name: 'event-storage',
@@ -23,4 +32,7 @@ const useEventStore = create(
   )
 );
 
-export default useEventStore;
+export const useSearch = create(set => ({
+  search: '',
+  editSearch: data => set({ search: data }),
+}));

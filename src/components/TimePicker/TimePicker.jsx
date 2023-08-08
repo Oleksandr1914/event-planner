@@ -1,10 +1,10 @@
 import { Space, TimePicker } from 'antd';
 import { Container } from './TimePicker.styled';
+import moment from 'moment';
+import { useState } from 'react';
 
-const TimePickerComponent = ({ setIsTime }) => {
-  const onChange = (time, timeString) => {
-    setIsTime(timeString);
-  };
+const TimePickerComponent = ({ setIsTime, time }) => {
+  const [selectedTime, setSelectedTime] = useState(time);
 
   return (
     <Container>
@@ -12,7 +12,13 @@ const TimePickerComponent = ({ setIsTime }) => {
         <TimePicker
           use12Hours
           format="h:mm a"
-          onChange={onChange}
+          value={moment(selectedTime, 'HH:mm')}
+          // onChange={onChange}
+          onSelect={value => {
+            const timeString = moment(value).format('HH:mm a');
+            setSelectedTime(timeString);
+            setIsTime(timeString);
+          }}
           size="large"
         />
       </Space>

@@ -16,9 +16,10 @@ import { useState } from 'react';
 import DatePickerReact from '../DatePicker/DatePickerReact';
 import Down from '../../assets/select-down.svg';
 import TimePickerComponent from '../TimePicker/TimePicker';
-import useEventStore from '../../store';
+import { useEventStore } from '../../store';
 import { nanoid } from 'nanoid';
 import { useNavigate } from 'react-router-dom';
+import Notiflix from 'notiflix';
 
 const arrayCategory = [
   'Art',
@@ -32,22 +33,39 @@ const arrayCategory = [
 
 const arrayPriority = ['High', 'Medium', 'Low'];
 
-const FormEvent = () => {
+const FormEvent = ({
+  title,
+  description,
+  location,
+  date,
+  time,
+  category,
+  priority,
+  id,
+  pathname,
+}) => {
   const [isActiveCategory, setIsActiveCategory] = useState(false);
   const [isActivePriority, setIsActivePriority] = useState(false);
-  const [isPriority, setIsPriority] = useState('');
-  const [isCategory, setIsCategory] = useState('');
+  const [isPriority, setIsPriority] = useState(priority);
+  const [isCategory, setIsCategory] = useState(category);
   const [isDate, setIsDate] = useState('');
-  const [isTime, setIsTime] = useState('');
+  const [isTime, setIsTime] = useState(time);
 
   const navigate = useNavigate();
 
-  const addEvent = useEventStore(state => state.addEvent);
+  const { addEvent, editEvent } = useEventStore(state => ({
+    addEvent: state.addEvent,
+    editEvent: state.editEvent,
+  }));
 
   return (
     <ContainerForm>
       <Formik
-        initialValues={{ Title: '', Description: '', Location: '' }}
+        initialValues={{
+          Title: title,
+          Description: description,
+          Location: location,
+        }}
         validationSchema={Yup.object({
           Title: Yup.string()
             .max(25, 'Must be 25 characters or less')
@@ -60,17 +78,33 @@ const FormEvent = () => {
             .required('Invalid input'),
         })}
         onSubmit={(values, { resetForm }) => {
-          addEvent({
-            title: values.Title,
-            description: values.Description,
-            data: isDate,
-            time: isTime,
-            location: values.Location,
-            category: isCategory,
-            picture: 'Default',
-            priority: isPriority,
-            id: nanoid(),
-          });
+          if (!isCategory || !isPriority || !isTime || !isDate) {
+            Notiflix.Notify.failure('Please fill in all fields!!!');
+            return;
+          }
+          pathname === '/create-event'
+            ? addEvent({
+                title: values.Title,
+                description: values.Description,
+                data: isDate,
+                time: isTime,
+                location: values.Location,
+                category: isCategory,
+                picture: 'Default',
+                priority: isPriority,
+                id: nanoid(),
+              })
+            : editEvent({
+                title: values.Title,
+                description: values.Description,
+                data: isDate,
+                time: isTime,
+                location: values.Location,
+                category: isCategory,
+                picture: 'Default',
+                priority: isPriority,
+                id: id,
+              });
 
           setIsPriority('');
           setIsCategory('');
@@ -196,12 +230,12 @@ const FormEvent = () => {
 
               <InputBox className="date">
                 <Labal>Select date</Labal>
-                <DatePickerReact setIsDate={setIsDate} />
+                <DatePickerReact setIsDate={setIsDate} date={date} />
                 <img src={Down} alt="arrow" />
               </InputBox>
               <InputBox className="time">
                 <Labal>Select time</Labal>
-                <TimePickerComponent setIsTime={setIsTime} />
+                <TimePickerComponent setIsTime={setIsTime} time={time} />
                 <img src={Down} alt="arrow" />
               </InputBox>
               <InputBox className="priority">
@@ -222,7 +256,7 @@ const FormEvent = () => {
                 isActiveCategory || isActivePriority ? 'active-selector' : ''
               }
             >
-              Submit
+              {pathname === '/create-event' ? 'Submit' : 'Save'}
             </SubmitFormButton>
           </form>
         )}

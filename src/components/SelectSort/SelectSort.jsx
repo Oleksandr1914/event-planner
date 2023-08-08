@@ -57,10 +57,6 @@ const SelectSort = ({ isActiveSort, setIsActiveSort, isActiveCategory }) => {
     };
   }, [isActiveSort]);
 
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
-
   return (
     <Select
       ref={btnRef}

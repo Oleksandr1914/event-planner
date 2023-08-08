@@ -1,9 +1,9 @@
 import { ButtonGoBack } from './ButtonBack.styled';
 import Back from '../../assets/back.svg';
 
-const ButtonBack = () => {
+const ButtonBack = ({ go, state }) => {
   return (
-    <ButtonGoBack to="/">
+    <ButtonGoBack to={go} state={state}>
       <img src={Back} alt="arrow" />
       <span>Back</span>
     </ButtonGoBack>
