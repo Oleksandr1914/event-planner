@@ -1,6 +1,6 @@
 import ButtonBack from '../../components/ButtonBack/ButtonBack';
 import CardInfoEvent from '../../components/CardInfoEvent/CardInfoEvent';
-import { Container, TitleInfo } from './InfoEvent.styled';
+import { BoxTitleCard, Container, TitleInfo } from './InfoEvent.styled';
 import { useLocation } from 'react-router-dom';
 const InfoEvent = () => {
   const location = useLocation();
@@ -8,9 +8,10 @@ const InfoEvent = () => {
   return (
     <Container>
       <ButtonBack />
-
-      <TitleInfo>Galery Opening</TitleInfo>
-      <CardInfoEvent event={location.state} />
+      <BoxTitleCard>
+        <TitleInfo>Galery Opening</TitleInfo>
+        <CardInfoEvent event={location.state} />
+      </BoxTitleCard>
     </Container>
   );
 };

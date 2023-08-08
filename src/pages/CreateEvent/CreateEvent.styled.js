@@ -19,6 +19,7 @@ export const CreateContainer = styled.div`
 
 export const TitleCreat = styled.h2`
   margin-top: 24px;
+  margin-bottom: 24px;
   color: ${colors.text};
   font-size: 24px;
   font-weight: 600;

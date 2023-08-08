@@ -15,6 +15,7 @@ import useEventStore from '../../store';
 const Home = () => {
   const [isActiveSort, setIsActiveSort] = useState(false);
   const [isActiveCategory, setIsActiveCategory] = useState(false);
+  const [isCategory, setIsCategory] = useState('');
 
   const { eventData } = useEventStore(state => ({
     eventData: state.eventData,
@@ -27,6 +28,8 @@ const Home = () => {
           isActiveCategory={isActiveCategory}
           setIsActiveCategory={setIsActiveCategory}
           isActiveSort={isActiveSort}
+          isCategory={isCategory}
+          setIsCategory={setIsCategory}
         />
         <SelectSort
           isActiveSort={isActiveSort}
@@ -37,9 +40,11 @@ const Home = () => {
       </FilterBlock>
       <EventBlock>
         <Title>My events</Title>
-        {eventData.map(el => (
-          <CardEvent event={el} key={el.id} />
-        ))}
+        {isCategory !== ''
+          ? eventData
+              .filter(el => el.category === isCategory)
+              .map(el => <CardEvent event={el} key={el.id} />)
+          : eventData.map(el => <CardEvent event={el} key={el.id} />)}
       </EventBlock>
       <Outlet />
     </Container>

@@ -81,7 +81,7 @@ const FormEvent = () => {
         {formik => (
           <form onSubmit={formik.handleSubmit}>
             <ContainerInputBox>
-              <InputBox>
+              <InputBox className="title">
                 <Labal htmlFor="Title">Title</Labal>
                 <Input
                   id="Title"
@@ -111,7 +111,7 @@ const FormEvent = () => {
                   <TextError>{formik.errors.Title}</TextError>
                 ) : null}
               </InputBox>
-              <InputBox>
+              <InputBox className="description">
                 <Labal htmlFor="Description">Description</Labal>
                 <Description
                   id="Description"
@@ -142,7 +142,7 @@ const FormEvent = () => {
                   <TextError>{formik.errors.Description}</TextError>
                 ) : null}
               </InputBox>
-              <InputBox>
+              <InputBox className="location">
                 <Labal htmlFor="Location">Location</Labal>
                 <Input
                   id="Location"
@@ -173,7 +173,7 @@ const FormEvent = () => {
                   <TextError>{formik.errors.Location}</TextError>
                 ) : null}
               </InputBox>
-              <InputBox>
+              <InputBox className="category">
                 <Labal>Category</Labal>
                 <SelectForm
                   array={arrayCategory}
@@ -183,7 +183,7 @@ const FormEvent = () => {
                   setIsValue={setIsCategory}
                 />
               </InputBox>
-              <InputBox>
+              <InputBox className="picture">
                 <Labal className="disabled">Add picture</Labal>
                 <Input
                   type="text"
@@ -193,28 +193,28 @@ const FormEvent = () => {
                 />
                 <IconInput className="disabled" />
               </InputBox>
-            </ContainerInputBox>
-            <InputBox>
-              <Labal>Select date</Labal>
-              <DatePickerReact setIsDate={setIsDate} />
-              <img src={Down} alt="arrow" />
-            </InputBox>
-            <InputBox>
-              <Labal>Select time</Labal>
-              <TimePickerComponent setIsTime={setIsTime} />
-              {/* <img src={Down} alt="arrow" /> */}
-            </InputBox>
 
-            <InputBox>
-              <Labal>Priority</Labal>
-              <SelectForm
-                array={arrayPriority}
-                isActive={isActivePriority}
-                setIsActive={setIsActivePriority}
-                isValue={isPriority}
-                setIsValue={setIsPriority}
-              />
-            </InputBox>
+              <InputBox className="date">
+                <Labal>Select date</Labal>
+                <DatePickerReact setIsDate={setIsDate} />
+                <img src={Down} alt="arrow" />
+              </InputBox>
+              <InputBox className="time">
+                <Labal>Select time</Labal>
+                <TimePickerComponent setIsTime={setIsTime} />
+                <img src={Down} alt="arrow" />
+              </InputBox>
+              <InputBox className="priority">
+                <Labal>Priority</Labal>
+                <SelectForm
+                  array={arrayPriority}
+                  isActive={isActivePriority}
+                  setIsActive={setIsActivePriority}
+                  isValue={isPriority}
+                  setIsValue={setIsPriority}
+                />
+              </InputBox>
+            </ContainerInputBox>
             <SubmitFormButton
               type="submit"
               disabled={!formik.isValid}

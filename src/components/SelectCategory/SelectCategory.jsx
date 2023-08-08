@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   ItemBody,
   Select,
@@ -11,8 +11,9 @@ const SelectCategory = ({
   isActiveCategory,
   setIsActiveCategory,
   isActiveSort,
+  isCategory,
+  setIsCategory,
 }) => {
-  const [value, setValue] = useState('');
   const btnRef = useRef();
 
   const arrayCategory = [
@@ -30,7 +31,7 @@ const SelectCategory = ({
   };
 
   const onItemBody = element => {
-    setValue(element);
+    setIsCategory(element);
     setIsActiveCategory(!isActiveCategory);
   };
 
@@ -60,10 +61,6 @@ const SelectCategory = ({
     };
   }, [isActiveCategory]);
 
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
-
   return (
     <Select
       ref={btnRef}
@@ -71,7 +68,7 @@ const SelectCategory = ({
       className={isActiveCategory && 'active'}
       onClick={selectHandler}
     >
-      <TextCategory>{value === '' ? 'Category' : value}</TextCategory>
+      <TextCategory>{isCategory === '' ? 'Category' : isCategory}</TextCategory>
       {isActiveCategory && <TextSelector>Category</TextSelector>}
       {isActiveCategory && (
         <SelectBody>

@@ -16,8 +16,20 @@ export const Container = styled.main`
   }
 `;
 
+export const BoxTitleCard = styled.div`
+  width: 272px;
+  padding-top: 24px;
+  ${device.tablet} {
+    width: 688px;
+  }
+  ${device.desktop} {
+    width: 628px;
+    padding: 17px;
+    margin: 0 auto;
+  }
+`;
+
 export const TitleInfo = styled.h2`
-  margin-top: 24px;
   margin-bottom: 24px;
   color: ${colors.text};
   font-size: 24px;
@@ -26,9 +38,5 @@ export const TitleInfo = styled.h2`
 
   ${device.tablet} {
     font-size: 32px;
-  }
-  ${device.desktop} {
-    margin-left: 406px;
-    margin-top: 17px;
   }
 `;

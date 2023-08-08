@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../utils/colors';
 import { ReactComponent as Cross } from '../../assets/cross-small.svg';
+import { device } from '../../utils/mixins';
 
 export const ContainerForm = styled.div`
   padding: 40px 16px;
@@ -11,6 +12,15 @@ export const ContainerForm = styled.div`
 
 export const ContainerInputBox = styled.div`
   display: grid;
+  ${device.tablet} {
+    grid-template-areas:
+      'title location'
+      'description category'
+      'description picture'
+      'date priority'
+      'time a';
+    column-gap: 25px;
+  }
 `;
 
 export const InputBox = styled.div`
@@ -24,6 +34,34 @@ export const InputBox = styled.div`
     top: 40px;
     right: 12px;
     pointer-events: none;
+  }
+
+  ${device.tablet} {
+    width: 308px;
+    &.title {
+      grid-area: title;
+    }
+    &.description {
+      grid-area: description;
+    }
+    &.location {
+      grid-area: location;
+    }
+    &.category {
+      grid-area: category;
+    }
+    &.picture {
+      grid-area: picture;
+    }
+    &.date {
+      grid-area: date;
+    }
+    &.time {
+      grid-area: time;
+    }
+    &.priority {
+      grid-area: priority;
+    }
   }
 `;
 
@@ -122,5 +160,12 @@ export const SubmitFormButton = styled.button`
 
   &.active-selector {
     margin-top: 50px;
+  }
+  ${device.tablet} {
+    width: 193px;
+    margin-left: auto;
+    &.active-selector {
+      margin-top: 0px;
+    }
   }
 `;

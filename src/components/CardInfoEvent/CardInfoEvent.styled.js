@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { colors } from '../../utils/colors';
+import { device } from '../../utils/mixins';
 
 export const ContainerCard = styled.div`
-  width: 272px;
   min-height: 464px;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 12px;
@@ -15,6 +15,13 @@ export const ImageCard = styled.img`
   object-fit: cover;
   object-position: top;
   border-radius: 8px;
+  ${device.tablet} {
+    width: 688px;
+    height: 272px;
+  }
+  ${device.desktop} {
+    width: 628px;
+  }
 `;
 
 export const BlockTextCard = styled.div`

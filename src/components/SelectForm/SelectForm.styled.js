@@ -32,11 +32,11 @@ export const Select = styled.div`
 
   ${device.tablet} {
     display: block;
-    width: 148px;
+    width: 308px;
     padding-right: 50px;
 
     &.active {
-      width: 158px;
+      width: 308px;
       padding-left: 16px;
     }
 
@@ -64,7 +64,7 @@ export const SelectBody = styled.ul`
 
   border-radius: 8px;
   ${device.tablet} {
-    width: 158px;
+    width: 308px;
   }
 `;
 
