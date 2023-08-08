@@ -21,7 +21,6 @@ export const Select = styled.div`
     position: absolute;
     top: 16px;
     right: 12px;
-    /* z-index: 2; */
     width: 24px;
     height: 24px;
 
@@ -42,6 +41,13 @@ export const Select = styled.div`
 
     &.active::before {
       right: 16px;
+    }
+  }
+
+  ${device.desktop} {
+    width: 378px;
+    &.active {
+      width: 378px;
     }
   }
 `;
@@ -65,6 +71,9 @@ export const SelectBody = styled.ul`
   border-radius: 8px;
   ${device.tablet} {
     width: 308px;
+  }
+  ${device.desktop} {
+    width: 378px;
   }
 `;
 

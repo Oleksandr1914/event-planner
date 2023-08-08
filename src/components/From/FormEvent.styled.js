@@ -21,6 +21,14 @@ export const ContainerInputBox = styled.div`
       'time a';
     column-gap: 25px;
   }
+
+  ${device.desktop} {
+    grid-template-areas:
+      'title date category'
+      'description time picture'
+      'description location priority';
+    column-gap: 42px;
+  }
 `;
 
 export const InputBox = styled.div`
@@ -62,6 +70,10 @@ export const InputBox = styled.div`
     &.priority {
       grid-area: priority;
     }
+  }
+
+  ${device.desktop} {
+    width: 372px;
   }
 `;
 

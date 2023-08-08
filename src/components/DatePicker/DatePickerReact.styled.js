@@ -16,6 +16,9 @@ export const CustomInput = styled.input`
   ${device.tablet} {
     width: 308px;
   }
+  ${device.desktop} {
+    width: 372px;
+  }
 `;
 
 export const ContainerDate = styled.div`
@@ -98,6 +101,28 @@ export const ContainerDate = styled.div`
     }
     & .react-datepicker__day-name {
       width: 38px;
+      height: 32px;
+    }
+  }
+
+  ${device.desktop} {
+    & .react-datepicker-popper[data-placement^='top'] {
+      width: 372px;
+    }
+
+    & .react-datepicker {
+      width: 372px;
+    }
+
+    & .react-datepicker__header {
+      width: 362px;
+    }
+    & .react-datepicker__day {
+      width: 47px;
+      height: 32px;
+    }
+    & .react-datepicker__day-name {
+      width: 47px;
       height: 32px;
     }
   }
