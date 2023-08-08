@@ -10,19 +10,17 @@ export const ContainerCard = styled.div`
   border-radius: 12px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
 
+  &:hover .hover,
+  &:focus .hover {
+    outline: none;
+    display: block;
+  }
+
   ${device.tablet} {
     width: 332px;
   }
   ${device.desktop} {
     width: 302px;
-  }
-`;
-
-export const CardHover = styled.a`
-  &:hover .hover,
-  &:focus .hover {
-    outline: none;
-    display: block;
   }
 `;
 

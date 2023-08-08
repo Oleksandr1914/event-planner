@@ -1,8 +1,8 @@
 import { Button } from './ButtonMoreInfo.styled';
 
-const ButtonMoreInfo = () => {
+const ButtonMoreInfo = ({ event }) => {
   return (
-    <Button className="hover" to="/info-event">
+    <Button to="/info-event" state={{ ...event }} className="hover">
       More info
     </Button>
   );

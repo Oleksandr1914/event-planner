@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SelectCategory from '../../components/SelectCategory/SelectCategory';
 import SelectSort from '../../components/SelectSort/SelectSort';
 import {
@@ -19,10 +19,6 @@ const Home = () => {
   const { eventData } = useEventStore(state => ({
     eventData: state.eventData,
   }));
-
-  useEffect(() => {
-    console.log(eventData);
-  }, [eventData]);
 
   return (
     <Container>

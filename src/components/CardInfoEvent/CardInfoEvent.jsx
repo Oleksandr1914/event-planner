@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react';
 import {
-  BlockLocationAndTime,
-  BlockTitle,
-  BottomOfTheCard,
-  CategoryBox,
-  CategoryText,
+  BlockTextCard,
   ContainerCard,
-  DataTimeText,
-  DescriptionCard,
+  Description,
   ImageCard,
-  LocationText,
-  PriorityText,
-  TitleCard,
-} from './CardEvent.styled';
+  ItemInfoCategory,
+  ListInfoCategory,
+  Priority,
+} from './CardInfoEvent.styled';
 import Art from '../../assets/image-event/art.png';
 import Conference from '../../assets/image-event/conference.png';
 import Workshop from '../../assets/image-event/workshop.png';
@@ -22,9 +16,10 @@ import WorkshopSecond from '../../assets/image-event/workshop2.png';
 import Music from '../../assets/image-event/music.png';
 import Sport from '../../assets/image-event/sport.png';
 import Default from '../../assets/image-event/default.png';
-import ButtonMoreInfo from '../ButtonMoreInfo/ButtonMoreInfo';
+import { useEffect, useState } from 'react';
+import ButtonDeleteEvent from '../ButtonDeleteEvent/ButtonDeleteEvent';
 
-const CardEvent = ({ event }) => {
+const CardInfoEvent = ({ event }) => {
   const [pictur, setPecture] = useState(null);
 
   useEffect(() => {
@@ -62,28 +57,28 @@ const CardEvent = ({ event }) => {
   return (
     <ContainerCard>
       <ImageCard src={pictur} alt="event picture" />
-      <CategoryBox>
-        <CategoryText>{event.category}</CategoryText>
-        <PriorityText type={event.priority}>{event.priority}</PriorityText>
-      </CategoryBox>
-      <BottomOfTheCard>
-        <BlockLocationAndTime>
-          <DataTimeText>
+      <BlockTextCard>
+        <Description>{event.description}</Description>
+        <ListInfoCategory>
+          <ItemInfoCategory>
+            <span>{event.category}</span>
+          </ItemInfoCategory>
+          <ItemInfoCategory>
+            <Priority type={event.priority}>{event.priority}</Priority>
+          </ItemInfoCategory>
+          <ItemInfoCategory>
+            <span>{event.location}</span>
+          </ItemInfoCategory>
+          <ItemInfoCategory>
             <span>{event.data} </span>
             at
             <span> {event.time}</span>
-          </DataTimeText>
-          <LocationText>{event.location}</LocationText>
-        </BlockLocationAndTime>
-        <BlockTitle>
-          <TitleCard>{event.title}</TitleCard>
-          <DescriptionCard>{event.description}</DescriptionCard>
-
-          <ButtonMoreInfo event={event} />
-        </BlockTitle>
-      </BottomOfTheCard>
+          </ItemInfoCategory>
+        </ListInfoCategory>
+        <ButtonDeleteEvent idEvent={event.id} />
+      </BlockTextCard>
     </ContainerCard>
   );
 };
 
-export default CardEvent;
+export default CardInfoEvent;

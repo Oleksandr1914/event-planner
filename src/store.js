@@ -7,8 +7,11 @@ const useEventStore = create(
     (set, get) => ({
       eventData: [...events],
       addEvent: newEvent => {
-        console.log(newEvent);
         set({ eventData: [newEvent, ...get().eventData] });
+      },
+      deleteEvent: idEvent => {
+        const newArray = get().eventData.filter(el => el.id !== idEvent);
+        set({ eventData: newArray });
       },
     }),
     {
