@@ -43,6 +43,22 @@ const Home = () => {
     }
   }
 
+  function getSort(a, b) {
+    if (sort === 'nameUp') {
+      return a.title.localeCompare(b.title);
+    } else if (sort === 'nameDown') {
+      return b.title.localeCompare(a.title);
+    } else if (sort === 'priorityUp') {
+      return getPriorityValue(a.priority) - getPriorityValue(b.priority);
+    } else if (sort === 'priorityDown') {
+      return getPriorityValue(b.priority) - getPriorityValue(a.priority);
+    } else if (sort === 'dateUp') {
+      return new Date(a.date + ' ' + a.time) - new Date(b.date + ' ' + b.time);
+    } else if (sort === 'dateDown') {
+      return new Date(b.date + ' ' + b.time) - new Date(a.date + ' ' + a.time);
+    }
+  }
+
   return (
     <Container>
       <FilterBlock>
@@ -64,25 +80,7 @@ const Home = () => {
         <Title>My events</Title>
         {isCategory !== ''
           ? eventData
-              .sort((a, b) => {
-                if (sort === 'nameUp') {
-                  return a.title.localeCompare(b.title);
-                } else if (sort === 'nameDown') {
-                  return b.title.localeCompare(a.title);
-                } else if (sort === 'priorityUp') {
-                  return (
-                    getPriorityValue(a.priority) - getPriorityValue(b.priority)
-                  );
-                } else if (sort === 'priorityDown') {
-                  return (
-                    getPriorityValue(b.priority) - getPriorityValue(a.priority)
-                  );
-                } else if (sort === 'dateUp') {
-                  return new Date(a.date) - new Date(b.date);
-                } else if (sort === 'dateDown') {
-                  return new Date(b.date) - new Date(a.date);
-                }
-              })
+              .sort((a, b) => getSort(a, b))
               .filter(el => el.category === isCategory)
               .filter(
                 el =>
@@ -91,31 +89,7 @@ const Home = () => {
               )
               .map(el => <CardEvent event={el} key={el.id} />)
           : eventData
-              .sort((a, b) => {
-                if (sort === 'nameUp') {
-                  return a.title.localeCompare(b.title);
-                } else if (sort === 'nameDown') {
-                  return b.title.localeCompare(a.title);
-                } else if (sort === 'priorityUp') {
-                  return (
-                    getPriorityValue(a.priority) - getPriorityValue(b.priority)
-                  );
-                } else if (sort === 'priorityDown') {
-                  return (
-                    getPriorityValue(b.priority) - getPriorityValue(a.priority)
-                  );
-                } else if (sort === 'dateUp') {
-                  return (
-                    new Date(a.date + ' ' + a.time) -
-                    new Date(b.date + ' ' + b.time)
-                  );
-                } else if (sort === 'dateDown') {
-                  return (
-                    new Date(b.date + ' ' + b.time) -
-                    new Date(a.date + ' ' + a.time)
-                  );
-                }
-              })
+              .sort((a, b) => getSort(a, b))
               .filter(
                 el =>
                   el.title.toLowerCase().includes(search) ||
