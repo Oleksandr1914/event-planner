@@ -5,7 +5,7 @@ import { EditContainer, TitleEdit } from './EditEvent.styled';
 
 const EditEvent = () => {
   const locationUse = useLocation();
-  const { category, data, description, location, priority, time, title, id } =
+  const { category, date, description, location, priority, time, title, id } =
     locationUse.state;
 
   return (
@@ -16,7 +16,7 @@ const EditEvent = () => {
         title={title}
         description={description}
         location={location}
-        date={new Date(data)}
+        date={new Date(date)}
         time={time}
         category={category}
         priority={priority}

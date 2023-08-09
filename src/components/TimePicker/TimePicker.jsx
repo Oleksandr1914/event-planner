@@ -11,11 +11,11 @@ const TimePickerComponent = ({ setIsTime, time }) => {
       <Space wrap>
         <TimePicker
           use12Hours
-          format="h:mm "
-          value={moment(selectedTime, 'HH:mm ')}
+          format="h:mm a"
+          value={moment(selectedTime, 'HH:mm a')}
           // onChange={onChange}
           onSelect={value => {
-            const timeString = moment(value).format('HH:mm ');
+            const timeString = moment(value).format('HH:mm a');
             setSelectedTime(timeString);
             setIsTime(timeString);
           }}
